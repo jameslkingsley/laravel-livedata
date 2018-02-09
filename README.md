@@ -46,7 +46,9 @@ return [
 ];
 ```
 
-You'll need to setup your live database connection in `config\database.php`. Then just update `config\livedata.php` with its connection name. **Make sure you don't mix up the connections, you really don't want to truncate rows on the live database!**
+You'll need to setup your live database connection in `config\database.php`. Then just update `config\livedata.php` with its connection name.
+
+**Make sure you don't mix up the connections, you really don't want to truncate rows on the live database!**
 
 And now just run the command!
 
@@ -55,6 +57,8 @@ php artisan livedata:pull
 ```
 
 ## Note
-1. It will not pull any structural changes from the live, only the data. This means that if there are tables on the live that are not on the local, those tables will be skipped.
+1. All tables on the local database will be truncated before being filled from the live.
 
-2. Currently this package only supports MySQL databases due to the toggling of foreign key checks. I'm not sure of an elegant way to handle this necessity for multiple databases.
+2. It will not pull any structural changes from the live, only the data. This means that if there are tables on the live that are not on the local, those tables will be skipped.
+
+3. Currently this package only supports MySQL databases due to the toggling of foreign key checks. I'm not sure of an elegant way to handle this necessity for multiple databases.
