@@ -62,11 +62,20 @@ class PullDatabase extends Command
         $this->local->select('SET FOREIGN_KEY_CHECKS = 0');
 
         foreach ($this->tables() as $name => $table) {
+            $this->info(strtoupper($name));
+
             $this->truncate($name);
-            $this->pull($name, $table->get());
+            $this->info('  Truncated');
+
+            $rows = $table->get();
+            $this->pull($name, $rows);
+            $this->info("  Pulled {$rows->count()} rows");
         }
 
         $this->local->select('SET FOREIGN_KEY_CHECKS = 1');
+
+        $this->info('');
+        $this->info('Completed.');
     }
 
     /**
