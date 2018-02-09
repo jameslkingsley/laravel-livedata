@@ -1,0 +1,35 @@
+{
+    "name": "jameslkingsley/laravel-livedata",
+    "description": "Pull database rows from a live server.",
+    "homepage": "https://github.com/jameslkingsley/laravel-livedata",
+    "license": "MIT",
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^5.5",
+        "illuminate/database": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.3",
+        "orchestra/testbench": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kingsley\\LiveData\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kingsley\\LiveData\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor\\bin\\phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kingsley\\LiveData\\LiveDataServiceProvider"
+            ]
+        }
+    }
+}
