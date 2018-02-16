@@ -97,7 +97,7 @@ class PullDatabase extends Command
     {
         $tables = [];
 
-        foreach (array_map('reset', $this->local->select('SHOW TABLES')) as $table) {
+        foreach (array_map('reset', $this->live->select('SHOW TABLES')) as $table) {
             $tables[$table] = $this->live->table($table);
         }
 
